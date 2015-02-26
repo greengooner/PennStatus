@@ -12,8 +12,9 @@ def dvpole():
 	response = requests.get('http://dv.njtransit.com/mobile/tid-mobile.aspx?sid=NY')
 	soup = bs4.BeautifulSoup(response.text)
 	outxt = soup.get_text()
+	cleanoutxt = outxt.encode('utf-8')
 	f = open("dvoutxt.txt", "w")
-	f.write(outxt);
+	f.write(cleanoutxt);
 	f.close()
 
 def statuscheck():
