@@ -1,14 +1,14 @@
-'================================'
-'PENN STATION STATUS - To determine global train status for New York Penn Station via NJ Transit DepartureVision - By Ramon Carreras - created 2/23/14'
-'================================'
+#================================
+#PENN STATION STATUS - To determine global train status for New York Penn Station via NJ Transit DepartureVision - By Ramon Carreras - created 2/23/14'
+#================================'
 
-'Import libraries to pull DepartureVision page and parse it for status'
+#Import libraries to pull DepartureVision page and parse it for status'
 
 import requests
 import bs4
 
 def dvpole():
-	'Use REQUESTS library to pull DV page for NYP from the web and BS4 to convert to a text file'
+	#Use REQUESTS library to pull DV page for NYP from the web and BS4 to convert to a text file'
 	response = requests.get('http://dv.njtransit.com/mobile/tid-mobile.aspx?sid=NY')
 	soup = bs4.BeautifulSoup(response.text)
 	outxt = soup.get_text()
@@ -18,7 +18,7 @@ def dvpole():
 	f.close()
 
 def statuscheck():
-	'Looking through dvpole output for key words'
+	#Looking through dvpole output for key words'
 	global success
 	global fail
 	global statentry
@@ -50,7 +50,7 @@ def statuscheck():
 			fail += 1
 			statentry += 1
 def supermetric():
-	'Calculate train status against service terms'
+	#Calculate train status against service terms'
 	if success == statentry:
 		print 'ALL SYSTEMS GO'
 	else:
