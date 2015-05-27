@@ -3,7 +3,6 @@
 #================================'
 
 #Import libraries to pull DepartureVision page and parse it for status'
-
 import requests
 import bs4
 
@@ -55,17 +54,17 @@ def supermetric():
 		print 'ALL SYSTEMS GO'
 	else:
 		if fail >= 3:
-			print 'SOME DELAYS, CHECK DEPARTUREVISION AND TRANSIT ALERTS FOR DETAILS'
-			print ' '
-			print 'TRAINS WITH LATE/DELAYED/STANDBY/CANCELLED STATUS:', fail
-			print 'TOTAL TRAINS:', statentry
-			
-		elif fail >= 9:
-			print 'SIGNFICANT DELAYS, CHECK DEPARTUREVISION AND TRANSIT ALERTS FOR DETAILS'
-			print ' '
-			print 'TRAINS WITH LATE/DELAYED/STANDBY/CANCELLED STATUS:', fail
-			print 'TOTAL TRAINS:', statentry
-		else:
+			if fail >= 9:
+				print 'SIGNFICANT DELAYS, CHECK DEPARTUREVISION AND TRANSIT ALERTS FOR DETAILS'
+				print ' '
+				print 'TRAINS WITH LATE/DELAYED/STANDBY/CANCELLED STATUS:', fail
+				print 'TOTAL TRAINS:', statentry
+			if fail <= 9:
+				print 'SOME DELAYS, CHECK DEPARTUREVISION AND TRANSIT ALERTS FOR DETAILS'
+				print ' '
+				print 'TRAINS WITH LATE/DELAYED/STANDBY/CANCELLED STATUS:', fail
+				print 'TOTAL TRAINS:', statentry
+		elif fail <= 3:
 			print 'ALL SYSTEMS GO, BUT CHECK DEPARTUREVISION AND TRANSIT ALERTS FOR DETAILS'
 			print ' '
 			print 'TRAINS WITH LATE/DELAYED/STANDBY/CANCELLED STATUS:', fail
